@@ -9,7 +9,7 @@ import matplotlib.pyplot as plt
 import wandb
 
 
-WANDB_ENTITY = None
+WANDB_ENTITY = 'robot-vla'
 WANDB_PROJECT = 'vis_rlds'
 
 
@@ -52,7 +52,7 @@ actions, states = [], []
 for episode in tqdm.tqdm(ds.take(500)):
     for step in episode['steps']:
         actions.append(step['action'].numpy())
-        states.append(step['observation']['state'].numpy())
+        states.append(step['state'].numpy())
 actions = np.array(actions)
 states = np.array(states)
 action_mean = actions.mean(0)
